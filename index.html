@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" href="assets/Pet-Paw.svg" />
+
+    <title>Mundo Pet - Agendamentos</title>
+  </head>
+  <body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+      <div class="header-inner">
+        <div class="brand">
+          <img src="assets/Pet-Paw.svg" alt="" class="brand-icon" aria-hidden="true" />
+          <span class="brand-name">MUNDO PET</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== MAIN ===== -->
+    <main class="main">
+      <div class="page-inner">
+
+        <!-- Page title + date filter -->
+        <div class="page-header">
+          <div class="page-title-block">
+            <h1 class="page-title">Sua agenda</h1>
+            <p class="page-subtitle">
+              Aqui você pode ver todos os clientes e serviços agendados para hoje.
+            </p>
+          </div>
+
+          <div class="date-selector">
+            <img src="assets/Calendar.svg" alt="" class="date-selector-icon" aria-hidden="true" />
+            <input
+              type="date"
+              id="filter-date"
+              class="date-selector-input"
+              aria-label="Filtrar por data"
+            />
+            <span class="date-selector-chevron" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <!-- ===== SCHEDULE ===== -->
+        <div class="schedule" id="schedule">
+
+          <!-- Manhã -->
+          <section class="period-section" data-period="morning" aria-labelledby="morning-heading">
+            <div class="period-header">
+              <div class="period-label">
+                <img src="assets/Cloud-Sun.svg" alt="" class="period-icon" aria-hidden="true" />
+                <h2 class="period-name" id="morning-heading">Manhã</h2>
+              </div>
+              <span class="period-range">09h-12h</span>
+            </div>
+
+            <ul class="appointment-list" id="morning-list" aria-label="Agendamentos da manhã">
+              <li class="appointment-item">
+                <span class="appt-time">09:00</span>
+                <span class="appt-client">
+                  <strong class="appt-pet">Thor</strong>
+                  <span class="appt-sep"> / </span>
+                  <span class="appt-tutor">Fernanda Costa</span>
+                </span>
+                <span class="appt-service">Vacinação</span>
+                <button class="btn-remove" type="button">Remover agendamento</button>
+              </li>
+            </ul>
+          </section>
+
+          <!-- Tarde -->
+          <section class="period-section" data-period="afternoon" aria-labelledby="afternoon-heading">
+            <div class="period-header">
+              <div class="period-label">
+                <img src="assets/Sun.svg" alt="" class="period-icon" aria-hidden="true" />
+                <h2 class="period-name" id="afternoon-heading">Tarde</h2>
+              </div>
+              <span class="period-range">13h-18h</span>
+            </div>
+
+            <ul class="appointment-list" id="afternoon-list" aria-label="Agendamentos da tarde">
+              <li class="appointment-item">
+                <span class="appt-time">13:00</span>
+                <span class="appt-client">
+                  <strong class="appt-pet">Mel</strong>
+                  <span class="appt-sep"> / </span>
+                  <span class="appt-tutor">João Souza</span>
+                </span>
+                <span class="appt-service">Corte de Unhas</span>
+                <button class="btn-remove" type="button">Remover agendamento</button>
+              </li>
+              <li class="appointment-item">
+                <span class="appt-time">14:00</span>
+                <span class="appt-client">
+                  <strong class="appt-pet">Bella</strong>
+                  <span class="appt-sep"> / </span>
+                  <span class="appt-tutor">Pedro Martins</span>
+                </span>
+                <span class="appt-service">Aplicação de Anti-pulgas</span>
+                <button class="btn-remove" type="button">Remover agendamento</button>
+              </li>
+              <li class="appointment-item">
+                <span class="appt-time">15:00</span>
+                <span class="appt-client">
+                  <strong class="appt-pet">Simba</strong>
+                  <span class="appt-sep"> / </span>
+                  <span class="appt-tutor">Juliana Rocha</span>
+                </span>
+                <span class="appt-service">Tosa Higiênica</span>
+                <button class="btn-remove" type="button">Remover agendamento</button>
+              </li>
+            </ul>
+          </section>
+
+          <!-- Noite -->
+          <section class="period-section" data-period="night" aria-labelledby="night-heading">
+            <div class="period-header">
+              <div class="period-label">
+                <img src="assets/Moon.svg" alt="" class="period-icon" aria-hidden="true" />
+                <h2 class="period-name" id="night-heading">Noite</h2>
+              </div>
+              <span class="period-range">19h-21h</span>
+            </div>
+
+            <ul class="appointment-list" id="night-list" aria-label="Agendamentos da noite">
+              <li class="appointment-item">
+                <span class="appt-time">20:00</span>
+                <span class="appt-client">
+                  <strong class="appt-pet">Max</strong>
+                  <span class="appt-sep"> / </span>
+                  <span class="appt-tutor">Camila Santos</span>
+                </span>
+                <span class="appt-service">Limpeza de Dentes</span>
+                <button class="btn-remove" type="button">Remover agendamento</button>
+              </li>
+            </ul>
+          </section>
+
+        </div>
+        <!-- end .schedule -->
+
+      </div>
+    </main>
+
+    <!-- ===== FIXED NEW APPOINTMENT BUTTON ===== -->
+    <button class="btn-new-appt" id="btn-new-appt" type="button">
+      <p>NOVO AGENDAMENTO</p>
+    </button>
+
+    <!-- ===== MODAL OVERLAY ===== -->
+    <div
+      class="modal-overlay hidden"
+      id="modal-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+    >
+      <div class="modal">
+
+        <div class="modal-header">
+          <div>
+            <h2 class="modal-title" id="modal-title">Agende um atendimento</h2>
+            <p class="modal-subtitle">
+              Preencha os dados do cliente para realizar o agendamento:
+            </p>
+          </div>
+          <button class="btn-close-modal" id="btn-close-modal" type="button" aria-label="Fechar modal">
+            <img src="assets/Close.svg" alt="" aria-hidden="true" />
+          </button>
+        </div>
+
+        <form class="modal-form" id="modal-form" novalidate>
+
+          <!-- Nome do tutor -->
+          <div class="form-group">
+            <label class="form-label" for="tutor-name">Nome do tutor</label>
+            <div class="input-field">
+              <img src="assets/User.svg" alt="" class="field-icon" aria-hidden="true" />
+              <input
+                type="text"
+                id="tutor-name"
+                name="tutor"
+                class="field-input"
+                placeholder="Helena Souza"
+                autocomplete="name"
+                required
+              />
+            </div>
+            <span class="field-error hidden" id="tutor-error" role="alert"></span>
+          </div>
+
+          <!-- Nome do pet -->
+          <div class="form-group">
+            <label class="form-label" for="pet-name">Nome do pet</label>
+            <div class="input-field">
+              <img src="assets/Pet-Paw.svg" alt="" class="field-icon" aria-hidden="true" />
+              <input
+                type="text"
+                id="pet-name"
+                name="pet"
+                class="field-input"
+                placeholder="Cheddar"
+                required
+              />
+            </div>
+            <span class="field-error hidden" id="pet-error" role="alert"></span>
+          </div>
+
+          <!-- Telefone -->
+          <div class="form-group">
+            <label class="form-label" for="phone">Telefone</label>
+            <div class="input-field">
+              <img src="assets/Phone.svg" alt="" class="field-icon" aria-hidden="true" />
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                class="field-input"
+                placeholder="(00) 0 0000-0000"
+                autocomplete="tel"
+                required
+              />
+            </div>
+            <span class="field-error hidden" id="phone-error" role="alert"></span>
+          </div>
+
+          <!-- Descrição do serviço -->
+          <div class="form-group">
+            <label class="form-label" for="service-desc">Descrição do serviço</label>
+            <textarea
+              id="service-desc"
+              name="service"
+              class="field-textarea"
+              placeholder="Banho e tosa"
+              rows="3"
+              required
+            ></textarea>
+            <span class="field-error hidden" id="service-error" role="alert"></span>
+          </div>
+
+          <!-- Data + Hora (side by side) -->
+          <div class="form-row">
+
+            <div class="form-group">
+              <label class="form-label" for="appt-date">Data</label>
+              <div class="input-field input-field--select">
+                <img src="assets/Calendar.svg" alt="" class="field-icon" aria-hidden="true" />
+                <input
+                  type="date"
+                  id="appt-date"
+                  name="date"
+                  class="field-input field-input--date"
+                  required
+                />
+                <span class="field-chevron" aria-hidden="true"></span>
+              </div>
+              <span class="field-error hidden" id="appt-date-error" role="alert"></span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="appt-time">Hora</label>
+              <div class="input-field input-field--select">
+                <img src="assets/Clock.svg" alt="" class="field-icon" aria-hidden="true" />
+                <select id="appt-time" name="time" class="field-select" required>
+                  <option value="">Selecione</option>
+                  <optgroup label="Manhã (09h-12h)">
+                    <option value="09:00">09:00</option>
+                    <option value="10:00">10:00</option>
+                    <option value="11:00">11:00</option>
+                    <option value="12:00">12:00</option>
+                  </optgroup>
+                  <optgroup label="Tarde (13h-18h)">
+                    <option value="13:00">13:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="17:00">17:00</option>
+                    <option value="18:00">18:00</option>
+                  </optgroup>
+                  <optgroup label="Noite (19h-21h)">
+                    <option value="19:00">19:00</option>
+                    <option value="20:00">20:00</option>
+                    <option value="21:00">21:00</option>
+                  </optgroup>
+                </select>
+                <span class="field-chevron" aria-hidden="true"></span>
+              </div>
+              <span class="field-error hidden" id="appt-time-error" role="alert"></span>
+            </div>
+
+          </div>
+          <!-- end .form-row -->
+
+          <button type="submit" class="btn-schedule">AGENDAR</button>
+
+        </form>
+      </div>
+    </div>
+    <!-- end .modal-overlay -->
+
+  </body>
+</html>

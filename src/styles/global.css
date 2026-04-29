@@ -1,0 +1,104 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* =====================
+     Content
+     ===================== */
+  --content-primary:   #FFFFFF;
+  --content-secondary: #98959D;
+  --content-tertiary:  #666666;
+  --content-brand:     #9282FA;
+
+  /* =====================
+     Background
+     ===================== */
+  --background-primary:    #151515;
+  --background-secondary:  #1E1E1E;
+  --background-tertiary:   #23242C;
+  --background-brand:      #9282FA;
+  --background-highlights: #BDB4FA;
+
+  /* =====================
+     Border
+     ===================== */
+  --border-primary:   #3E3C41;
+  --border-secondary: #86818C;
+  --border-brand:     #9282FA;
+  --border-divisor:   #353339;
+
+  /* =====================
+     Accent
+     ===================== */
+  --accent-blue:         #027DF0;
+  --accent-blue-light:   #16487A;
+  --accent-yellow:       #F0DC02;
+  --accent-yellow-light: #756E1B;
+  --accent-orange:       #F09102;
+  --accent-orange-light: #75501B;
+
+  /* =====================
+     Typography — Famílias
+     ===================== */
+  --font-inter:       'Inter', sans-serif;
+  --font-inter-tight: 'Inter Tight', sans-serif;
+
+  /* =====================
+     Typography — Estilos
+     ===================== */
+  --title:             700 24px/32px var(--font-inter-tight);
+  --label-large:       700 16px/24px var(--font-inter);
+  --label-medium:      700 14px/24px var(--font-inter);
+  --label-small:       700 12px/16px var(--font-inter);
+  --paragraph-medium:  500 14px/24px var(--font-inter);
+  --paragraph-small:   500 12px/16px var(--font-inter);
+  --link:              500 12px/16px var(--font-inter);
+
+  /* =====================
+     Radius
+     ===================== */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-inter);
+  background-color: var(--background-primary);
+  color: var(--content-primary);
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  background: none;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+  color: inherit;
+}
+
+img {
+  display: block;
+}

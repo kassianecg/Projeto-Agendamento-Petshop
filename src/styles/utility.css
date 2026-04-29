@@ -1,0 +1,134 @@
+/* utility-first */
+
+/* =====================
+   Tipografia
+   ===================== */
+
+.text-title {
+  font: var(--title);
+}
+
+.text-label-lg {
+  font: var(--label-large);
+}
+
+.text-label-md {
+  font: var(--label-medium);
+}
+
+.text-label-sm {
+  font: var(--label-small);
+}
+
+.text-paragraph-md {
+  font: var(--paragraph-medium);
+}
+
+.text-paragraph-sm {
+  font: var(--paragraph-small);
+}
+
+.text-link {
+  font: var(--link);
+}
+
+/* =====================
+   Cores de texto
+   ===================== */
+
+.text-primary {
+  color: var(--content-primary);
+}
+
+.text-secondary {
+  color: var(--content-secondary);
+}
+
+.text-tertiary {
+  color: var(--content-tertiary);
+}
+
+.text-brand {
+  color: var(--content-brand);
+}
+
+/* =====================
+   Cores de fundo
+   ===================== */
+
+.bg-primary {
+  background-color: var(--background-primary);
+}
+
+.bg-secondary {
+  background-color: var(--background-secondary);
+}
+
+.bg-tertiary {
+  background-color: var(--background-tertiary);
+}
+
+.bg-brand {
+  background-color: var(--background-brand);
+}
+
+.bg-highlights {
+  background-color: var(--background-highlights);
+}
+
+/* =====================
+   Botões — estilos obrigatórios
+   ===================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font: var(--label-medium);
+  letter-spacing: 0.5px;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-primary {
+  background-color: var(--background-brand);
+  color: var(--content-primary);
+  box-shadow: var(--shadow-brand);
+}
+
+.btn-primary:hover {
+  background-color: var(--background-highlights);
+  box-shadow: var(--shadow-highlights);
+}
+
+/* =====================
+   Layout
+   ===================== */
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-4  { gap: 4px; }
+.gap-8  { gap: 8px; }
+.gap-16 { gap: 16px; }
+.gap-24 { gap: 24px; }
+.gap-32 { gap: 32px; }
+
+.hidden {
+  display: none !important;
+}

@@ -1,0 +1,28 @@
+{
+  "schedules": [
+    {
+      "id": "1777479891126",
+      "tutor": "Kassiane",
+      "pet": "kyara",
+      "phone": "19123456789",
+      "service": "Tosar",
+      "when": "2026-04-30T18:00:00.000Z"
+    },
+    {
+      "id": "1777480643396",
+      "tutor": "Kassiane Brag",
+      "pet": "kyara",
+      "phone": "19986001908",
+      "service": "3652",
+      "when": "2024-01-10T22:00:00.000Z"
+    },
+    {
+      "id": "1777480798906",
+      "tutor": "Kassiane Cristina Gonçalves Braga",
+      "pet": "Kyara",
+      "phone": "19986001908",
+      "service": "Banho",
+      "when": "2026-05-01T18:00:00.000Z"
+    }
+  ]
+}

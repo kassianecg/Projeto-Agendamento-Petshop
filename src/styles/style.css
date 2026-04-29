@@ -526,6 +526,17 @@
   background-color: var(--background-highlights);
 }
 
+.btn-schedule:disabled {
+  background-color: var(--background-secondary);
+  color: var(--content-secondary);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.btn-schedule:disabled:hover {
+  background-color: var(--background-secondary);
+}
+
 /* ==============================
    RESPONSIVE — TABLET / MOBILE
    ============================== */

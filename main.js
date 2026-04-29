@@ -59,6 +59,7 @@ const btnNewAppt   = document.getElementById("btn-new-appt");
 const modalOverlay = document.getElementById("modal-overlay");
 const btnCloseModal = document.getElementById("btn-close-modal");
 const modalForm    = document.getElementById("modal-form");
+const btnSchedule  = document.querySelector(".btn-schedule");
 
 const fieldTutor   = document.getElementById("tutor-name");
 const fieldPet     = document.getElementById("pet-name");
@@ -189,6 +190,7 @@ function openModal() {
   modalOverlay.classList.remove("hidden");
   // Sincroniza a data do modal com a data do filtro
   fieldDate.value = filterDate.value;
+  updateSubmitBtn();
   // Foco inicial no primeiro campo
   setTimeout(() => fieldTutor.focus(), 50);
 }
@@ -197,6 +199,7 @@ function closeModal() {
   modalOverlay.classList.add("hidden");
   clearErrors();
   modalForm.reset();
+  updateSubmitBtn();
 }
 
 btnNewAppt.addEventListener("click", openModal);
@@ -234,7 +237,8 @@ const validations = [
     error: errorPhone,
     validate: (v) => {
       if (!v.trim()) return "Informe o telefone.";
-      if (!/^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$/.test(v.trim())) return "Telefone inválido. Ex: (11) 9 1234-5678";
+      const digits = v.replace(/\D/g, "");
+      if (digits.length < 10 || digits.length > 11) return "Telefone inválido. Ex: (11) 9 1234-5678";
       return "";
     },
   },
@@ -264,6 +268,12 @@ function showError(errorEl, msg) {
   errorEl.classList.toggle("hidden", !msg);
 }
 
+function updateSubmitBtn() {
+  const hasErrors = validations.some(({ error }) => !error.classList.contains("hidden"));
+  const hasEmpty  = validations.some(({ field }) => !field.value.trim());
+  btnSchedule.disabled = hasErrors || hasEmpty;
+}
+
 function clearErrors() {
   validations.forEach(({ error }) => {
     error.textContent = "";
@@ -286,12 +296,14 @@ validations.forEach(({ field, error, validate }) => {
   field.addEventListener("blur", () => {
     const msg = validate(field.value);
     showError(error, msg);
+    updateSubmitBtn();
   });
   field.addEventListener("input", () => {
     if (!error.classList.contains("hidden")) {
       const msg = validate(field.value);
       showError(error, msg);
     }
+    updateSubmitBtn();
   });
 });
 

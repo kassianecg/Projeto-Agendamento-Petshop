@@ -5,26 +5,26 @@ import { schedulesDay } from "../schedules/load.js";
 import { openingHours } from "../../utils/opening-hours.js";
 
 // ── Elementos do modal ────────────────────────────────────────
-const modalOverlay  = document.getElementById("modal-overlay");
-const btnNewAppt    = document.getElementById("btn-new-appt");
+const modalOverlay = document.getElementById("modal-overlay");
+const btnNewAppt = document.getElementById("btn-new-appt");
 const btnCloseModal = document.getElementById("btn-close-modal");
-const modalForm     = document.getElementById("modal-form");
+const modalForm = document.getElementById("modal-form");
 
 // ── Campos do formulário ───────────────────────────────────────
-const fieldTutor   = document.getElementById("tutor-name");
-const fieldPet     = document.getElementById("pet-name");
-const fieldPhone   = document.getElementById("phone");
+const fieldTutor = document.getElementById("tutor-name");
+const fieldPet = document.getElementById("pet-name");
+const fieldPhone = document.getElementById("phone");
 const fieldService = document.getElementById("service-desc");
-const fieldDate    = document.getElementById("appt-date");
-const fieldTime    = document.getElementById("appt-time");
+const fieldDate = document.getElementById("appt-date");
+const fieldTime = document.getElementById("appt-time");
 
 // ── Elementos de erro por campo ────────────────────────────────
-const errorTutor   = document.getElementById("tutor-error");
-const errorPet     = document.getElementById("pet-error");
-const errorPhone   = document.getElementById("phone-error");
+const errorTutor = document.getElementById("tutor-error");
+const errorPet = document.getElementById("pet-error");
+const errorPhone = document.getElementById("phone-error");
 const errorService = document.getElementById("service-error");
-const errorDate    = document.getElementById("appt-date-error");
-const errorTime    = document.getElementById("appt-time-error");
+const errorDate = document.getElementById("appt-date-error");
+const errorTime = document.getElementById("appt-time-error");
 
 // ── Data do filtro principal (para sincronizar o modal) ────────
 const filterDate = document.getElementById("filter-date");
@@ -46,7 +46,8 @@ const validations = [
     error: errorPhone,
     validate: (v) => {
       if (!v.trim()) return "Informe o telefone.";
-      if (!/^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$/.test(v.trim()))
+      const digits = v.replace(/\D/g, "");
+      if (digits.length < 10 || digits.length > 11)
         return "Telefone inválido. Ex: (11) 9 1234-5678";
       return "";
     },
@@ -96,6 +97,26 @@ function validateAll() {
   return valid;
 }
 
+// ── Máscara de telefone brasileiro ───────────────────────────
+function applyPhoneMask(value) {
+  const d = value.replace(/\D/g, "").slice(0, 11);
+  if (!d.length) return "";
+  if (d.length <= 2) return `(${d}`;
+  if (d.length <= 6) return `(${d.slice(0, 2)}) ${d.slice(2)}`;
+  if (d.length <= 10) return `(${d.slice(0, 2)}) ${d.slice(2, 6)}-${d.slice(6)}`;
+  return `(${d.slice(0, 2)}) ${d.slice(2, 3)} ${d.slice(3, 7)}-${d.slice(7)}`;
+}
+
+fieldPhone.addEventListener("input", (e) => {
+  const cursor = e.target.selectionStart;
+  const raw = e.target.value;
+  const masked = applyPhoneMask(raw);
+  e.target.value = masked;
+  // Restaura posição do cursor aproximadamente
+  const diff = masked.length - raw.length;
+  e.target.setSelectionRange(cursor + diff, cursor + diff);
+});
+
 // Validação em tempo real (ao sair do campo e ao digitar)
 validations.forEach(({ field, error, validate }) => {
   field.addEventListener("blur", () => {
@@ -144,11 +165,11 @@ modalForm.onsubmit = async (event) => {
 
   if (!validateAll()) return;
 
-  const date    = fieldDate.value;
+  const date = fieldDate.value;
   const timeVal = fieldTime.value;
-  const tutor   = fieldTutor.value.trim();
-  const pet     = fieldPet.value.trim();
-  const phone   = fieldPhone.value.trim();
+  const tutor = fieldTutor.value.trim();
+  const pet = fieldPet.value.trim();
+  const phone = fieldPhone.value.trim();
   const service = fieldService.value.trim();
 
   try {
